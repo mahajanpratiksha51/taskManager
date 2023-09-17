@@ -1,0 +1,112 @@
+<body>
+  <!-- Nav Bar -->
+  <nav class="navbar">
+    <div class="container-fluid">
+      <h1>Task Manager Application</h1>
+      <div class="d-flex">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add
+          Task+</button>
+      </div>
+    </div>
+  </nav>
+  <!-- Search Bar -->
+  <div class="col-md-8 mb-2 form-group">
+    <label for="productId">Search by TaskName</label>
+    <input type="text" class="form-control" id="productId" placeholder="Enter Task name" [(ngModel)]="namesearch" />
+    <i class="fa-brands fa-searchengin" id="search"></i>
+  </div>
+
+
+  <!-- Table -->
+  <div class="container">
+    <table class="table mt-3 table-bordered text-center table-striped">
+      <thead>
+        <tr>
+
+          <th scope="col">Task Name</th>
+          <th scope="col">States</th>
+          <th scope="col">DueDate</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of data | filter: namesearch |paginate:{id:'listing_pagination', itemsPerPage: 3, currentPage: page, totalItems: totalRecords}">
+          <td scope="row">{{item.taskName}}</td>
+          <td>{{item.states}}</td>
+          <td>{{item.dueDate}}</td>
+
+
+          <td>
+            <!--Update Button -->
+            <button routerLink="/update/{{item.id}}" class="btn"><i class="fa-solid fa-pen-to-square" id="green"
+                style="font-size:2em;"></i></button>
+            <!-- Delete Button-->
+            <button (click)="deleteTask(item.id)" class="btn m-2 "><i class="fa-solid fa-trash" id="red"
+                style="font-size:2em;"></i></button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    <!-- Pagination -->
+    <div class="page">
+      <pagination-controls id="listing_pagination" maxSize="3" directionLinks="true"
+        (pageChange)="page=$event"></pagination-controls>
+    </div>
+  </div>
+
+
+
+  <!-- Add Task Form -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div style="background-color:yellowgreen;" class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">ADD TASK</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formValue">
+            <div class="mb-3 form-group">
+              <label for="taskName" class="form-label">Task Name</label>
+              <input type="text" formControlName="taskName" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+              <small class="text-danger"
+                *ngIf="formValue.get('taskName').hasError('required') && formValue.get('taskName').touched">
+                Please enter a Task name*
+              </small>
+            </div>
+            <div class="mb-3 form-group">
+              <label for="exampleInputPassword1" class="form-label">Date</label>
+              <input type="date" formControlName="dueDate" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+              <label for="selectMenu" class="form-label">States</label>
+              <select class="form-select" formControlName="states" id="selectMenu" aria-label="Default select example">
+                <option>select States</option>
+                <option value="pending ">Pending</option>
+                <option value="completed">completed</option>
+
+              </select>
+
+
+            </div>
+
+
+          </form>
+        </div>
+        <!--  add task form closing Button-->
+        <div style="background-color:yellowgreen;" class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <!-- Add Task Button-->
+          <button type="button" (click)="addTask(this.formValue.value)" [disabled]="this.formValue.invalid"
+            class="btn btn-primary">Add</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>

@@ -1,0 +1,16 @@
+body{
+    background-image: url("https://images.pexels.com/photos/1933319/pexels-photo-1933319.jpeg?auto=compress&cs=tinysrgb&w=600");
+    padding-bottom: 600px;
+}
+h5{
+    text-align: center;
+}
+.card{
+    top:50%;
+    left:100%;
+    width: 435px;
+    padding: 31px 40px;
+    transform:translate(-50%,-50%);
+    margin-top: 100px;
+    background-color: blueviolet;
+}

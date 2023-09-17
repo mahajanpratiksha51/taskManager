@@ -1,0 +1,65 @@
+
+body{
+    background-image: url("https://images.pexels.com/photos/1933319/pexels-photo-1933319.jpeg?auto=compress&cs=tinysrgb&w=600");
+    padding-bottom: 600px;
+}
+.container{
+    margin-top: 100px;
+}
+table tr td, table tr th{
+    background-color: rgba(210,130,240, 0.2) !important;
+    color: white;
+}
+.close{
+    font-weight: 700;
+    background-color: border-box;
+    color: white;
+    font-size: 23px;
+    width: 50px;
+    border: none;
+}
+
+    
+
+.btn{
+    border: none;
+
+}
+#green{
+    color:yellow;
+
+}
+#red{
+    color:red;
+}
+.navbar{
+    background-color: blueviolet;
+}
+h1{
+    margin-left: 600px;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.table{
+    font-size: x-large;
+}
+h5{
+    margin-left: 170px;
+}
+
+#productId{
+    width: 800px;
+    margin-left: 500px;
+    margin-top: 30px;
+    background-color: blueviolet;
+    color:white;
+    font-weight: bolder;
+}
+#search{
+    position:absolute ;
+    z-index: 20;
+    right: 32%;
+    top:131px;
+    color:white;
+    font-size: 2em;
+}
